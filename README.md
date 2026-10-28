@@ -49,6 +49,18 @@ uvicorn app.main:app --reload --port 8000
 cd frontend && npm install && npm run dev   # http://localhost:5173, proxies /api to :8000
 ```
 
+## Deploy on GitHub Pages (+ Render for the API)
+
+`.github/workflows/pages.yml` builds the frontend and publishes it to GitHub Pages on every push to
+`main`. Pages hosts static files only, so the API still runs on Render (steps below). One-time setup:
+
+1. Deploy the API on Render (step 1 below) and copy its URL.
+2. Repo **Settings → Secrets and variables → Actions → Variables → New repository variable**:
+   `VITE_API_URL` = the Render URL (no trailing `/api`).
+3. Repo **Settings → Pages → Source = GitHub Actions**, then re-run the workflow (Actions tab).
+
+The site appears at `https://<user>.github.io/<repo>/`. The API already accepts `*.github.io` origins.
+
 ## Deploy (Netlify + Render)
 
 Netlify hosts static sites only, so the React frontend goes on Netlify and the FastAPI backend (which

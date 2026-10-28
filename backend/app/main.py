@@ -22,6 +22,6 @@ ORIGINS = ["http://localhost:5173", "http://localhost:5174"] + [
 
 app = FastAPI(title="Consumer Behaviour Analytics API", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=ORIGINS,
-                   allow_origin_regex=r"https://([a-z0-9-]+--)?[a-z0-9-]+\.netlify\.app",
+                   allow_origin_regex=r"https://(([a-z0-9-]+--)?[a-z0-9-]+\.netlify\.app|[a-z0-9-]+\.github\.io)",
                    allow_methods=["*"], allow_headers=["*"])
 app.include_router(router)
