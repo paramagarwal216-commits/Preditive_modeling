@@ -24,3 +24,7 @@ frontend/dist/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Stray nested clones
+/Predictive Modeling of Consumer Behavior in Online Food Ordering/
+/consumer behaviour online food ordering/
