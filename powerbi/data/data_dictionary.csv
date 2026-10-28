@@ -1,0 +1,15 @@
+Column,Type,Role,Missing,Levels,Note
+Age,numeric,Numeric feature,0,,Model input
+Gender,category,Nominal feature (one-hot),0,"Female, Male",Model input
+Marital Status,category,Nominal feature (one-hot),0,"Married, Prefer not to say, Single",Model input
+Occupation,category,Nominal feature (one-hot),0,"Employee, House wife, Self Employeed, Student",Model input
+Monthly Income,ordered category,Ordinal feature,0,"No Income, Below Rs.10000, 10001 to 25000, 25001 to 50000, More than 50000",Encoded low to high
+Educational Qualifications,ordered category,Ordinal feature,0,"Uneducated, School, Graduate, Post Graduate, Ph.D",Encoded low to high
+Family size,numeric,Numeric feature,0,,Model input
+Customer Type,category,Descriptive only,0,"Frequent, New, Regular","Not in the original spec; shown in charts and filters, never a model input"
+latitude,numeric,Geography only,0,,Used for the map
+longitude,numeric,Geography only,0,,Used for the map
+Pin code,numeric,Geography only,0,,Used for the map
+Output,category,Target,0,"No, Yes",Positive class = Yes
+Feedback,category,Charts only,0,"Negative, Positive",Recorded after the order; never a model input
+Unnamed: 13,category,Dropped,0,"No, Yes",Undocumented; agrees with Output on 100.0% of rows

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ReportSection_models_v4",
+  "position": {
+    "x": 10,
+    "y": 390,
+    "z": 4000,
+    "height": 325,
+    "width": 500
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fold Scores"
+                    }
+                  },
+                  "Property": "Fold"
+                }
+              },
+              "queryRef": "Fold Scores.Fold",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fold Scores"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "Fold Scores.Model"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fold Scores"
+                    }
+                  },
+                  "Property": "Fold ROC-AUC"
+                }
+              },
+              "queryRef": "Fold Scores.Fold ROC-AUC"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ROC-AUC on each held-out fold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

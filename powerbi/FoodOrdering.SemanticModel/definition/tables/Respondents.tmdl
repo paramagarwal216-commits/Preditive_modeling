@@ -1,0 +1,172 @@
+table Respondents
+	lineageTag: bd91a372-6307-4a1c-a7fe-bec49c635944
+
+	measure Respondents = COUNTROWS ( Respondents )
+		formatString: #,0
+		lineageTag: afc8c244-2c01-4c71-9917-bfe9c70260e5
+
+	measure 'Say Yes' = SUM ( Respondents[Says Yes] )
+		formatString: #,0
+		lineageTag: 7e4f300c-6d2e-4f43-9715-459069bea5be
+
+	measure 'Yes Rate' = DIVIDE ( [Say Yes], [Respondents] )
+		formatString: 0.0%
+		lineageTag: 75434aee-bece-422b-bc8b-ce8e14d7b97d
+
+	measure 'Positive Feedback Rate' = DIVIDE ( SUM ( Respondents[Positive Feedback] ), [Respondents] )
+		formatString: 0.0%
+		lineageTag: dd2675e5-6d88-4963-8ff1-bdebeb62ed85
+
+	measure 'Average Age' = AVERAGE ( Respondents[Age] )
+		formatString: 0.0
+		lineageTag: e0e3c91e-2116-4ffa-9d18-6a33bd1bb740
+
+	measure 'Average Family Size' = AVERAGE ( Respondents[Family size] )
+		formatString: 0.0
+		lineageTag: 879395f5-0f99-43b8-a58a-495548b39779
+
+	measure 'Yes Rate vs All' = [Yes Rate] - CALCULATE ( [Yes Rate], ALL ( Respondents ) )
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: 0308295e-d854-44b0-a4f7-47f5ae533f3f
+
+	measure 'Avg Latitude' = AVERAGE ( Respondents[latitude] )
+		formatString: 0.0000
+		lineageTag: 0a11269e-ad55-4d1c-b59b-89bf943513b6
+
+	measure 'Avg Longitude' = AVERAGE ( Respondents[longitude] )
+		formatString: 0.0000
+		lineageTag: 99840166-6494-4346-83d8-837a83514480
+
+	column 'Respondent ID'
+		dataType: int64
+		isHidden
+		lineageTag: 4a2dc9e4-d395-4f6a-9666-bc33b0a83dfd
+		summarizeBy: none
+		sourceColumn: Respondent ID
+
+	column Age
+		dataType: int64
+		lineageTag: 9a0185a9-6a69-4905-83de-ca98071ba19e
+		summarizeBy: none
+		sourceColumn: Age
+
+	column Gender
+		dataType: string
+		lineageTag: 088ede9b-d35e-474e-8056-deb010494de8
+		summarizeBy: none
+		sourceColumn: Gender
+
+	column 'Marital Status'
+		dataType: string
+		lineageTag: 0d18252d-b7c5-417b-9c73-47847713144b
+		summarizeBy: none
+		sourceColumn: Marital Status
+
+	column Occupation
+		dataType: string
+		lineageTag: 03d17360-e43e-4c89-a65b-8d4dbd65300f
+		summarizeBy: none
+		sourceColumn: Occupation
+
+	column 'Monthly Income'
+		dataType: string
+		lineageTag: fa994d37-0120-4a7e-bc9a-1da38a09ba75
+		summarizeBy: none
+		sourceColumn: Monthly Income
+		sortByColumn: 'Income Order'
+
+	column 'Educational Qualifications'
+		dataType: string
+		lineageTag: 775aa9cd-700c-4154-a775-38bf7841417d
+		summarizeBy: none
+		sourceColumn: Educational Qualifications
+		sortByColumn: 'Education Order'
+
+	column 'Family size'
+		dataType: int64
+		lineageTag: 92f03164-de2b-4817-b0e1-8dad6bf153f1
+		summarizeBy: none
+		sourceColumn: Family size
+
+	column 'Customer Type'
+		dataType: string
+		lineageTag: 24a40688-09f4-4cb4-880c-f73acf9081c5
+		summarizeBy: none
+		sourceColumn: Customer Type
+
+	column latitude
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 5f574c6a-8d55-4ecf-aecd-b51fec0984f4
+		summarizeBy: none
+		sourceColumn: latitude
+
+	column longitude
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 1dd47bda-a595-4147-9a9a-ed3ce230ec25
+		summarizeBy: none
+		sourceColumn: longitude
+
+	column 'Pin code'
+		dataType: int64
+		lineageTag: 07a7e394-5ef9-4db0-86d6-d06cf280aa78
+		summarizeBy: none
+		sourceColumn: Pin code
+
+	column Output
+		dataType: string
+		lineageTag: 9376cd77-b9ef-48e5-931d-ce211dd05594
+		summarizeBy: none
+		sourceColumn: Output
+
+	column Feedback
+		dataType: string
+		lineageTag: b0303ff5-9dfe-42d7-8c73-7e74876100b9
+		summarizeBy: none
+		sourceColumn: Feedback
+
+	column 'Income Order'
+		dataType: int64
+		isHidden
+		lineageTag: 2ebc7808-cb60-4347-96db-4319b2217830
+		summarizeBy: none
+		sourceColumn: Income Order
+
+	column 'Education Order'
+		dataType: int64
+		isHidden
+		lineageTag: 12dba03e-4432-4751-9760-86be683f91b9
+		summarizeBy: none
+		sourceColumn: Education Order
+
+	column 'Age Band'
+		dataType: string
+		lineageTag: 26b291d9-9e7a-4907-a1d6-57641392e8cf
+		summarizeBy: none
+		sourceColumn: Age Band
+
+	column 'Says Yes'
+		dataType: int64
+		isHidden
+		lineageTag: 9fc32835-ceb8-43da-b613-aea48deb47dc
+		summarizeBy: none
+		sourceColumn: Says Yes
+
+	column 'Positive Feedback'
+		dataType: int64
+		isHidden
+		lineageTag: 1ff592f4-de80-4387-a421-92c3babf8f73
+		summarizeBy: none
+		sourceColumn: Positive Feedback
+
+	partition Respondents = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "respondents.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Respondent ID", Int64.Type}, {"Age", Int64.Type}, {"Gender", type text}, {"Marital Status", type text}, {"Occupation", type text}, {"Monthly Income", type text}, {"Educational Qualifications", type text}, {"Family size", Int64.Type}, {"Customer Type", type text}, {"latitude", type number}, {"longitude", type number}, {"Pin code", Int64.Type}, {"Output", type text}, {"Feedback", type text}, {"Income Order", Int64.Type}, {"Education Order", Int64.Type}, {"Age Band", type text}, {"Says Yes", Int64.Type}, {"Positive Feedback", Int64.Type}}, "en-US")
+				in
+				    Typed
+

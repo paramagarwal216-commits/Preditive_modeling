@@ -1,0 +1,40 @@
+Model,Feature,Mean Abs SHAP,Importance Share,LR Coefficient
+Logistic Regression,Monthly Income,0.2122,0.3513245033112583,-0.1435
+Logistic Regression,Age,0.1173,0.19420529801324504,-0.1468
+Logistic Regression,Marital Status_Single,0.0607,0.10049668874172185,0.1318
+Logistic Regression,Occupation_Student,0.0554,0.09172185430463577,0.1106
+Logistic Regression,Educational Qualifications,0.0464,0.07682119205298013,0.0744
+Logistic Regression,Occupation_Employee,0.0358,0.05927152317880795,-0.0787
+Logistic Regression,Marital Status_Married,0.034,0.056291390728476824,-0.0798
+Logistic Regression,Gender_Male,0.013,0.02152317880794702,0.0268
+Logistic Regression,Family size,0.0082,0.013576158940397353,0.0099
+Logistic Regression,Gender_Female,0.0082,0.013576158940397353,-0.017
+Logistic Regression,Occupation_Self Employeed,0.008,0.013245033112582781,-0.0339
+Logistic Regression,Marital Status_Prefer not to say,0.0041,0.006788079470198677,-0.0421
+Logistic Regression,Occupation_House wife,0.0007,0.0011589403973509935,0.0118
+Random Forest,Age,0.1018,0.24577498792853694,
+Random Forest,Family size,0.0634,0.15306615161757603,
+Random Forest,Marital Status_Single,0.0438,0.10574601641718975,
+Random Forest,Occupation_Student,0.0431,0.10405601158860453,
+Random Forest,Educational Qualifications,0.0376,0.0907774022211492,
+Random Forest,Monthly Income,0.0298,0.07194591984548528,
+Random Forest,Occupation_Employee,0.026,0.06277160791887976,
+Random Forest,Gender_Male,0.0172,0.04152583293095123,
+Random Forest,Gender_Female,0.0166,0.04007725736359247,
+Random Forest,Marital Status_Married,0.0146,0.035248672139063256,
+Random Forest,Occupation_Self Employeed,0.0091,0.02197006277160792,
+Random Forest,Marital Status_Prefer not to say,0.0084,0.020280057943022692,
+Random Forest,Occupation_House wife,0.0028,0.006760019314340898,
+XGBoost,Age,0.3389,0.3630034275921165,
+XGBoost,Family size,0.1321,0.14149528706083975,
+XGBoost,Marital Status_Single,0.1161,0.1243573264781491,
+XGBoost,Occupation_Student,0.1151,0.12328620394173093,
+XGBoost,Educational Qualifications,0.064,0.06855184233076264,
+XGBoost,Occupation_Employee,0.0427,0.045736932305055704,
+XGBoost,Monthly Income,0.0389,0.041666666666666664,
+XGBoost,Gender_Female,0.0329,0.035239931448157666,
+XGBoost,Marital Status_Married,0.0267,0.02859897172236504,
+XGBoost,Gender_Male,0.0132,0.014138817480719795,
+XGBoost,Occupation_Self Employeed,0.0096,0.010282776349614395,
+XGBoost,Marital Status_Prefer not to say,0.002,0.0021422450728363325,
+XGBoost,Occupation_House wife,0.0014,0.0014995715509854327,

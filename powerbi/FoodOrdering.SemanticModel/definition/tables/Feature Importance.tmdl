@@ -1,0 +1,50 @@
+table 'Feature Importance'
+	lineageTag: a832b4ad-5c03-466b-b414-e66d6bd6abc9
+
+	measure Importance = SUM ( 'Feature Importance'[Importance Share] )
+		formatString: 0.0%
+		lineageTag: 11df15d5-f0be-421d-a8ee-c15120ef8199
+
+	column Model
+		dataType: string
+		lineageTag: a40ba5aa-f783-4018-8188-5360cef808fb
+		summarizeBy: none
+		sourceColumn: Model
+
+	column Feature
+		dataType: string
+		lineageTag: de175196-dbe0-4fc6-922c-9e8c78924c1b
+		summarizeBy: none
+		sourceColumn: Feature
+
+	column 'Mean Abs SHAP'
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 20dba057-dafe-4b3a-800a-00267e1cd728
+		summarizeBy: none
+		sourceColumn: Mean Abs SHAP
+
+	column 'Importance Share'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 74f8d933-d2ca-425a-a1c2-0da3d512cd78
+		summarizeBy: none
+		sourceColumn: Importance Share
+
+	column 'LR Coefficient'
+		dataType: double
+		formatString: 0.000
+		lineageTag: 69fd9a35-f5fd-434c-9055-6c988d8617ce
+		summarizeBy: none
+		sourceColumn: LR Coefficient
+
+	partition 'Feature Importance' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "feature_importance.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Model", type text}, {"Feature", type text}, {"Mean Abs SHAP", type number}, {"Importance Share", type number}, {"LR Coefficient", type number}}, "en-US")
+				in
+				    Typed
+

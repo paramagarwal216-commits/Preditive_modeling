@@ -1,0 +1,110 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ReportSection_segments_v6",
+  "position": {
+    "x": 435,
+    "y": 365,
+    "z": 6000,
+    "height": 350,
+    "width": 835
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Association Tests"
+                    }
+                  },
+                  "Property": "Attribute"
+                }
+              },
+              "queryRef": "Association Tests.Attribute"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Association Tests"
+                    }
+                  },
+                  "Property": "Test"
+                }
+              },
+              "queryRef": "Association Tests.Test"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Association Tests"
+                    }
+                  },
+                  "Property": "p"
+                }
+              },
+              "queryRef": "Association Tests.p"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Association Tests"
+                    }
+                  },
+                  "Property": "Holm p"
+                }
+              },
+              "queryRef": "Association Tests.Holm p"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Association Tests"
+                    }
+                  },
+                  "Property": "Significant (5%)"
+                }
+              },
+              "queryRef": "Association Tests.Significant (5%)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Association tests (all 285 respondents)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

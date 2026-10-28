@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ReportSection_models_v1",
+  "position": {
+    "x": 10,
+    "y": 5,
+    "z": 1000,
+    "height": 95,
+    "width": 1260
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Can a model predict Yes from a person's profile?",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Three algorithms were trained on 7 inputs (age, family size, gender, marital status, occupation, income, education) and tested with nested cross-validation: 50 held-out folds. ROC-AUC 0.5 = coin flip, 1.0 = perfect. Random Forest 0.708, XGBoost 0.704, Logistic Regression 0.638, baseline 0.500. Default model: Logistic Regression (intervals overlap, so the simpler model is preferred).",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { color-scheme: dark; background: theme("colors.bg"); }
+body {
+  /* Transparent so the aurora layer below shows through the glass panels. */
+  background: transparent;
+  color: theme("colors.ink.DEFAULT");
+  font-family: theme("fontFamily.sans");
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid theme("colors.accent.DEFAULT");
+  outline-offset: 2px;
+}
+
+/* Aurora: slow-drifting multi-colour light behind everything; the glass panels blur it. */
+body::before {
+  content: ""; position: fixed; inset: -20vmax; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(38vmax 38vmax at 12% 18%, rgba(139, 92, 246, 0.50), transparent 62%),
+    radial-gradient(34vmax 34vmax at 88% 12%, rgba(236, 72, 153, 0.40), transparent 62%),
+    radial-gradient(40vmax 40vmax at 82% 88%, rgba(20, 184, 166, 0.36), transparent 62%),
+    radial-gradient(30vmax 30vmax at 18% 92%, rgba(245, 158, 11, 0.30), transparent 62%),
+    radial-gradient(28vmax 28vmax at 52% 48%, rgba(56, 189, 248, 0.22), transparent 62%);
+  filter: blur(24px);
+  animation: aurora 32s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  to { transform: translate3d(3vmax, -2vmax, 0) rotate(8deg) scale(1.06); }
+}
+
+@layer components {
+  /* Glassmorphism: frosted, translucent panels with a light rim. */
+  .glass {
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03));
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(6, 4, 26, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  }
+  /* Chrome (sidebar, top bar, popovers): denser glass so text stays readable. */
+  .glass-strong {
+    background: rgba(24, 20, 60, 0.78);
+    -webkit-backdrop-filter: blur(24px) saturate(170%);
+    backdrop-filter: blur(24px) saturate(170%);
+    border-color: rgba(255, 255, 255, 0.10);
+  }
+  .glass-inset {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+  }
+  /* Claymorphism: soft, puffy 3D controls with an inner highlight and an outer drop. */
+  .clay {
+    border-radius: 14px; color: #fff;
+    background: linear-gradient(145deg, var(--c1, #A78BFA), var(--c2, #7C3AED));
+    box-shadow: 6px 8px 18px rgba(6, 4, 26, 0.45), inset 3px 3px 6px rgba(255, 255, 255, 0.38),
+      inset -4px -5px 9px rgba(0, 0, 0, 0.24);
+    transition: transform 150ms ease-out, box-shadow 150ms ease-out, filter 150ms ease-out;
+  }
+  .clay:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.06); }
+  .clay:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 2px 3px 8px rgba(6, 4, 26, 0.45), inset 3px 3px 7px rgba(0, 0, 0, 0.25);
+  }
+  .clay-violet { --c1: #C4B5FD; --c2: #7C3AED; }
+  .clay-pink { --c1: #F9A8D4; --c2: #DB2777; }
+  .clay-teal { --c1: #5EEAD4; --c2: #0D9488; }
+  .clay-amber { --c1: #FDE68A; --c2: #D97706; }
+  .clay-sky { --c1: #7DD3FC; --c2: #2563EB; }
+  .text-gradient {
+    background: linear-gradient(90deg, #C4B5FD, #F472B6 45%, #FBBF24);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+}
+
+.page-fade {
+  animation: page-fade 200ms ease-out;
+}
+@keyframes page-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Cards rise in one after another, and lift slightly on hover. */
+.card-rise { animation: card-rise 420ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.card-lift { transition: border-color 180ms ease-out, transform 180ms ease-out, background-color 180ms ease-out; }
+.card-lift:hover { border-color: rgba(244, 114, 182, 0.45); transform: translateY(-2px); }
+
+/* Print: drop chrome so the dashboard prints as a report. */
+@media print {
+  nav, header, .no-print { display: none !important; }
+  body { background: #fff; }
+}
+
+/* Two-thumb range: two overlaid native inputs, only the thumbs take pointer input. */
+.range2 { position: relative; height: 20px; }
+.range2 input[type="range"] {
+  position: absolute; inset: 0; width: 100%; margin: 0; background: transparent;
+  pointer-events: none; -webkit-appearance: none; appearance: none;
+}
+.range2 input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto; -webkit-appearance: none; width: 14px; height: 14px;
+  border-radius: 50%; background: theme("colors.surface"); border: 2px solid theme("colors.accent.DEFAULT");
+}
+.range2 input[type="range"]::-moz-range-thumb {
+  pointer-events: auto; width: 12px; height: 12px; border-radius: 50%;
+  background: theme("colors.surface"); border: 2px solid theme("colors.accent.DEFAULT");
+}
+.range2 .track {
+  position: absolute; left: 0; right: 0; top: 9px; height: 2px; background: theme("colors.line");
+}
+.range2 .fill { position: absolute; top: 9px; height: 2px; background: linear-gradient(90deg, #A78BFA, #F472B6); }
+
+input[type="range"].single { accent-color: theme("colors.accent.DEFAULT"); width: 100%; }
+
+.leaflet-container { font-family: theme("fontFamily.sans"); background: theme("colors.bg"); }
+/* Dark basemap: OSM tiles inverted and tinted towards the navy theme. */
+.leaflet-tile-pane { filter: grayscale(1) invert(1) brightness(0.75) contrast(1.1) sepia(0.35) hue-rotate(195deg); }
+.leaflet-tooltip { background: theme("colors.raised"); color: theme("colors.ink.DEFAULT"); }
+.leaflet-tooltip-top:before { border-top-color: theme("colors.raised"); }
+.leaflet-bar a { background: theme("colors.raised"); color: theme("colors.ink.DEFAULT"); border-color: theme("colors.line"); }
+.leaflet-control-attribution { background: rgba(26, 25, 71, 0.8) !important; color: theme("colors.ink.3"); }
+.leaflet-control-attribution a { color: theme("colors.sky"); }
+/* No shadows anywhere, including Leaflet's own controls and tooltips. */
+.leaflet-bar, .leaflet-tooltip, .leaflet-control-attribution {
+  box-shadow: none !important;
+  border: 1px solid theme("colors.line") !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,49 @@
+table 'Data Dictionary'
+	lineageTag: 354f77cc-36f6-4589-889d-d1fcaf406431
+
+	column Column
+		dataType: string
+		lineageTag: f0011a17-88a1-4280-9562-8d707228fd64
+		summarizeBy: none
+		sourceColumn: Column
+
+	column Type
+		dataType: string
+		lineageTag: 5058750e-db4c-4307-9102-329f134a56e2
+		summarizeBy: none
+		sourceColumn: Type
+
+	column Role
+		dataType: string
+		lineageTag: eaa1f35c-a55f-4928-86a6-56ef4872799c
+		summarizeBy: none
+		sourceColumn: Role
+
+	column Missing
+		dataType: int64
+		lineageTag: d0886706-2b39-4036-b370-d9325a1b60a3
+		summarizeBy: none
+		sourceColumn: Missing
+
+	column Levels
+		dataType: string
+		lineageTag: b954f766-d899-4ee8-a3ff-78484eff9027
+		summarizeBy: none
+		sourceColumn: Levels
+
+	column Note
+		dataType: string
+		lineageTag: 003dac3e-e8b6-4610-9e09-37e7cd8b6b73
+		summarizeBy: none
+		sourceColumn: Note
+
+	partition 'Data Dictionary' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "data_dictionary.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Column", type text}, {"Type", type text}, {"Role", type text}, {"Missing", Int64.Type}, {"Levels", type text}, {"Note", type text}}, "en-US")
+				in
+				    Typed
+

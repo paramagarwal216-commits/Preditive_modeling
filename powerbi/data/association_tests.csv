@@ -1,0 +1,8 @@
+Attribute,Test,Statistic,p,Holm p,Significant (5%)
+Age,"Fisher's exact test (Freeman–Halton, 10,000 Monte Carlo draws)",,0.0001,0.0007,Yes
+Family size,"Fisher's exact test (Freeman–Halton, 10,000 Monte Carlo draws)",,0.155384,0.310769,No
+Gender,Chi-square test of independence (df = 1),0.3586,0.549278,0.549278,No
+Marital Status,"Fisher's exact test (Freeman–Halton, 10,000 Monte Carlo draws)",,0.0001,0.0007,Yes
+Occupation,"Fisher's exact test (Freeman–Halton, 10,000 Monte Carlo draws)",,0.0001,0.0007,Yes
+Monthly Income,"Fisher's exact test (Freeman–Halton, 10,000 Monte Carlo draws)",,0.004,0.015998,Yes
+Educational Qualifications,"Fisher's exact test (Freeman–Halton, 10,000 Monte Carlo draws)",,0.069793,0.209379,No

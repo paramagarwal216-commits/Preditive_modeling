@@ -1,0 +1,3 @@
+expression DataFolder = "C:\Users\PARAM\OneDrive\Desktop\git repos\food-ordering-analytics\powerbi\data\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 9040b01a-0d94-432a-8d5c-b691a124efcf
+

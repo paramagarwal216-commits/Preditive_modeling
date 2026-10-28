@@ -1,0 +1,52 @@
+table 'Association Tests'
+	lineageTag: bb662dbd-26f7-4146-aec8-aa171e0c621b
+
+	column Attribute
+		dataType: string
+		lineageTag: 758118d5-b689-4e51-b828-92426b6f8ce6
+		summarizeBy: none
+		sourceColumn: Attribute
+
+	column Test
+		dataType: string
+		lineageTag: c8522db4-e732-4e8c-97ae-ba53e0adedcb
+		summarizeBy: none
+		sourceColumn: Test
+
+	column Statistic
+		dataType: double
+		formatString: 0.00
+		lineageTag: 5f4a17eb-61df-4024-bf47-8daeba43e9b7
+		summarizeBy: none
+		sourceColumn: Statistic
+
+	column p
+		dataType: double
+		formatString: 0.0000
+		lineageTag: bd848291-2155-4555-8e48-d8308511a059
+		summarizeBy: none
+		sourceColumn: p
+
+	column 'Holm p'
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 03682a6e-25c2-44b9-856f-d57cf4a3dcc9
+		summarizeBy: none
+		sourceColumn: Holm p
+
+	column 'Significant (5%)'
+		dataType: string
+		lineageTag: dd1d3ec9-1930-42d4-9868-ee11c466a8f5
+		summarizeBy: none
+		sourceColumn: Significant (5%)
+
+	partition 'Association Tests' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "association_tests.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Attribute", type text}, {"Test", type text}, {"Statistic", type number}, {"p", type number}, {"Holm p", type number}, {"Significant (5%)", type text}}, "en-US")
+				in
+				    Typed
+

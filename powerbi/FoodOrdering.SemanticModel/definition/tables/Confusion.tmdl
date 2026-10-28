@@ -1,0 +1,41 @@
+table Confusion
+	lineageTag: 0ce1c018-34f2-40fd-85dc-ad7dc63a3565
+
+	measure Predictions = SUM ( Confusion[Count] )
+		formatString: #,0
+		lineageTag: c47ed2c6-74cd-40d9-a502-888c713ad777
+
+	column Model
+		dataType: string
+		lineageTag: 6ae991de-7807-449d-b366-9ab8beace2a2
+		summarizeBy: none
+		sourceColumn: Model
+
+	column Actual
+		dataType: string
+		lineageTag: bfd74c65-ca54-4cd0-ade1-762bd55a9670
+		summarizeBy: none
+		sourceColumn: Actual
+
+	column Predicted
+		dataType: string
+		lineageTag: 8d5d19bb-63fb-417e-bb16-cbbd6d2577a9
+		summarizeBy: none
+		sourceColumn: Predicted
+
+	column Count
+		dataType: int64
+		lineageTag: 7e7db0ce-9c14-40cb-b70d-3167526db498
+		summarizeBy: none
+		sourceColumn: Count
+
+	partition Confusion = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "confusion.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Model", type text}, {"Actual", type text}, {"Predicted", type text}, {"Count", Int64.Type}}, "en-US")
+				in
+				    Typed
+

@@ -1,0 +1,13 @@
+Model,Actual,Predicted,Count
+Logistic Regression,No,No,47
+Logistic Regression,No,Yes,21
+Logistic Regression,Yes,No,82
+Logistic Regression,Yes,Yes,135
+Random Forest,No,No,39
+Random Forest,No,Yes,29
+Random Forest,Yes,No,44
+Random Forest,Yes,Yes,173
+XGBoost,No,No,45
+XGBoost,No,Yes,23
+XGBoost,Yes,No,60
+XGBoost,Yes,Yes,157

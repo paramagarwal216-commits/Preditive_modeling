@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ReportSection_dictionary_v1",
+  "position": {
+    "x": 10,
+    "y": 5,
+    "z": 1000,
+    "height": 80,
+    "width": 1260
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "What is in the file, and how was it cleaned?",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Cleaning: spaces stripped from text, the unnamed last column dropped (it matched Output on every row), 103 exact duplicate rows removed, no missing values. Feedback is recorded after ordering, so it is never a model input. Location columns are used for the map only.",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

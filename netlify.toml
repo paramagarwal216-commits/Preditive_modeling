@@ -1,0 +1,15 @@
+# Netlify builds and hosts the React frontend. The FastAPI backend runs elsewhere (see render.yaml);
+# set VITE_API_URL in Netlify (Site configuration > Environment variables) to its URL.
+[build]
+  base = "frontend"
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Client-side routes (/report, /models, ...) all load index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

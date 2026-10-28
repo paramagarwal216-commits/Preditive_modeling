@@ -1,0 +1,78 @@
+table 'Model Scores'
+	lineageTag: 9bb17e38-4a42-4393-9172-d8947dc03e99
+
+	measure Score = MAX ( 'Model Scores'[Mean] )
+		formatString: 0.000
+		lineageTag: f0c757a8-ef50-4171-80dd-f2eba69f30ab
+
+	measure 'ROC-AUC Score' = CALCULATE ( MAX ( 'Model Scores'[Mean] ), 'Model Scores'[Metric] = "ROC-AUC" )
+		formatString: 0.000
+		lineageTag: d7b5b4d8-271b-4286-b958-d01e73b378bd
+
+	measure 'Default Model' = CALCULATE ( MAX ( 'Model Scores'[Model] ), 'Model Scores'[Is Default] = 1 )
+		lineageTag: 80abb74e-5198-4803-a951-affa383f3f6b
+
+	column Model
+		dataType: string
+		lineageTag: 94797264-14fe-4ada-8e25-4f324668ad11
+		summarizeBy: none
+		sourceColumn: Model
+		sortByColumn: 'Model Order'
+
+	column 'Model Order'
+		dataType: int64
+		isHidden
+		lineageTag: 8172da43-1089-4632-92d0-082f04ba2f60
+		summarizeBy: none
+		sourceColumn: Model Order
+
+	column Metric
+		dataType: string
+		lineageTag: 093a1f6a-653d-4570-8ce7-3a220c043ffc
+		summarizeBy: none
+		sourceColumn: Metric
+
+	column Mean
+		dataType: double
+		formatString: 0.000
+		lineageTag: 3ecd891f-85a2-42c6-86a3-ca787464268a
+		summarizeBy: none
+		sourceColumn: Mean
+
+	column 'CI Low'
+		dataType: double
+		formatString: 0.000
+		lineageTag: abc8563d-38a5-44ff-8d1b-138159d13575
+		summarizeBy: none
+		sourceColumn: CI Low
+
+	column 'CI High'
+		dataType: double
+		formatString: 0.000
+		lineageTag: a5e1e9d7-eb03-488f-ac83-e911cb1fd9e3
+		summarizeBy: none
+		sourceColumn: CI High
+
+	column Folds
+		dataType: int64
+		lineageTag: 225abe65-091c-42f2-848b-6201438b903f
+		summarizeBy: none
+		sourceColumn: Folds
+
+	column 'Is Default'
+		dataType: int64
+		isHidden
+		lineageTag: e3e619e3-bdfd-4c44-8b66-3b8ccbc64412
+		summarizeBy: none
+		sourceColumn: Is Default
+
+	partition 'Model Scores' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "model_scores.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Model", type text}, {"Model Order", Int64.Type}, {"Metric", type text}, {"Mean", type number}, {"CI Low", type number}, {"CI High", type number}, {"Folds", Int64.Type}, {"Is Default", Int64.Type}}, "en-US")
+				in
+				    Typed
+

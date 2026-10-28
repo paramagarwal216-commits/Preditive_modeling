@@ -1,0 +1,36 @@
+table 'Fold Scores'
+	lineageTag: 03e013fd-75c8-4f9f-965e-359f9365a2cf
+
+	measure 'Fold ROC-AUC' = AVERAGE ( 'Fold Scores'[ROC-AUC] )
+		formatString: 0.000
+		lineageTag: 517322e7-020a-4e86-aa8d-56ff5b5a4bb1
+
+	column Model
+		dataType: string
+		lineageTag: c0c750e4-e025-487d-8e84-aa54cc760e7e
+		summarizeBy: none
+		sourceColumn: Model
+
+	column Fold
+		dataType: int64
+		lineageTag: d7af3a84-47fc-43bb-9775-97ce49b6d1a7
+		summarizeBy: none
+		sourceColumn: Fold
+
+	column ROC-AUC
+		dataType: double
+		formatString: 0.000
+		lineageTag: 87518a76-8bf1-493c-a83d-e78c31a25487
+		summarizeBy: none
+		sourceColumn: ROC-AUC
+
+	partition 'Fold Scores' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fold_scores.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Model", type text}, {"Fold", Int64.Type}, {"ROC-AUC", type number}}, "en-US")
+				in
+				    Typed
+

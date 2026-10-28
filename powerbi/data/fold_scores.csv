@@ -1,0 +1,201 @@
+Model,Fold,ROC-AUC
+Baseline,1,0.5
+Baseline,2,0.5
+Baseline,3,0.5
+Baseline,4,0.5
+Baseline,5,0.5
+Baseline,6,0.5
+Baseline,7,0.5
+Baseline,8,0.5
+Baseline,9,0.5
+Baseline,10,0.5
+Baseline,11,0.5
+Baseline,12,0.5
+Baseline,13,0.5
+Baseline,14,0.5
+Baseline,15,0.5
+Baseline,16,0.5
+Baseline,17,0.5
+Baseline,18,0.5
+Baseline,19,0.5
+Baseline,20,0.5
+Baseline,21,0.5
+Baseline,22,0.5
+Baseline,23,0.5
+Baseline,24,0.5
+Baseline,25,0.5
+Baseline,26,0.5
+Baseline,27,0.5
+Baseline,28,0.5
+Baseline,29,0.5
+Baseline,30,0.5
+Baseline,31,0.5
+Baseline,32,0.5
+Baseline,33,0.5
+Baseline,34,0.5
+Baseline,35,0.5
+Baseline,36,0.5
+Baseline,37,0.5
+Baseline,38,0.5
+Baseline,39,0.5
+Baseline,40,0.5
+Baseline,41,0.5
+Baseline,42,0.5
+Baseline,43,0.5
+Baseline,44,0.5
+Baseline,45,0.5
+Baseline,46,0.5
+Baseline,47,0.5
+Baseline,48,0.5
+Baseline,49,0.5
+Baseline,50,0.5
+Logistic Regression,1,0.5376
+Logistic Regression,2,0.7535
+Logistic Regression,3,0.4784
+Logistic Regression,4,0.7284
+Logistic Regression,5,0.7359
+Logistic Regression,6,0.5918
+Logistic Regression,7,0.7561
+Logistic Regression,8,0.76
+Logistic Regression,9,0.5324
+Logistic Regression,10,0.5432
+Logistic Regression,11,0.7378
+Logistic Regression,12,0.535
+Logistic Regression,13,0.735
+Logistic Regression,14,0.7483
+Logistic Regression,15,0.5664
+Logistic Regression,16,0.6154
+Logistic Regression,17,0.6713
+Logistic Regression,18,0.593
+Logistic Regression,19,0.6429
+Logistic Regression,20,0.6487
+Logistic Regression,21,0.5306
+Logistic Regression,22,0.6722
+Logistic Regression,23,0.6877
+Logistic Regression,24,0.5922
+Logistic Regression,25,0.505
+Logistic Regression,26,0.6836
+Logistic Regression,27,0.7308
+Logistic Regression,28,0.5781
+Logistic Regression,29,0.6935
+Logistic Regression,30,0.6512
+Logistic Regression,31,0.6066
+Logistic Regression,32,0.6932
+Logistic Regression,33,0.5482
+Logistic Regression,34,0.7035
+Logistic Regression,35,0.5764
+Logistic Regression,36,0.6023
+Logistic Regression,37,0.66
+Logistic Regression,38,0.6628
+Logistic Regression,39,0.5631
+Logistic Regression,40,0.6636
+Logistic Regression,41,0.4703
+Logistic Regression,42,0.5507
+Logistic Regression,43,0.5706
+Logistic Regression,44,0.7708
+Logistic Regression,45,0.6885
+Logistic Regression,46,0.6512
+Logistic Regression,47,0.7194
+Logistic Regression,48,0.6661
+Logistic Regression,49,0.7533
+Logistic Regression,50,0.5291
+Random Forest,1,0.653
+Random Forest,2,0.7937
+Random Forest,3,0.6271
+Random Forest,4,0.7492
+Random Forest,5,0.8488
+Random Forest,6,0.6827
+Random Forest,7,0.7579
+Random Forest,8,0.7666
+Random Forest,9,0.6047
+Random Forest,10,0.6462
+Random Forest,11,0.8016
+Random Forest,12,0.6259
+Random Forest,13,0.7085
+Random Forest,14,0.647
+Random Forest,15,0.7076
+Random Forest,16,0.5734
+Random Forest,17,0.6888
+Random Forest,18,0.7475
+Random Forest,19,0.7243
+Random Forest,20,0.7467
+Random Forest,21,0.6923
+Random Forest,22,0.6565
+Random Forest,23,0.7616
+Random Forest,24,0.7475
+Random Forest,25,0.7193
+Random Forest,26,0.5944
+Random Forest,27,0.8112
+Random Forest,28,0.7292
+Random Forest,29,0.7625
+Random Forest,30,0.7608
+Random Forest,31,0.7465
+Random Forest,32,0.7517
+Random Forest,33,0.6885
+Random Forest,34,0.6819
+Random Forest,35,0.6445
+Random Forest,36,0.743
+Random Forest,37,0.6731
+Random Forest,38,0.7558
+Random Forest,39,0.6478
+Random Forest,40,0.7525
+Random Forest,41,0.6276
+Random Forest,42,0.5664
+Random Forest,43,0.6802
+Random Forest,44,0.8439
+Random Forest,45,0.7093
+Random Forest,46,0.7386
+Random Forest,47,0.7089
+Random Forest,48,0.7359
+Random Forest,49,0.7317
+Random Forest,50,0.6188
+XGBoost,1,0.6949
+XGBoost,2,0.6853
+XGBoost,3,0.6071
+XGBoost,4,0.7309
+XGBoost,5,0.8455
+XGBoost,6,0.6958
+XGBoost,7,0.7386
+XGBoost,8,0.789
+XGBoost,9,0.6163
+XGBoost,10,0.7085
+XGBoost,11,0.7928
+XGBoost,12,0.6853
+XGBoost,13,0.6944
+XGBoost,14,0.7334
+XGBoost,15,0.6728
+XGBoost,16,0.6215
+XGBoost,17,0.6591
+XGBoost,18,0.7259
+XGBoost,19,0.6478
+XGBoost,20,0.6993
+XGBoost,21,0.6696
+XGBoost,22,0.7185
+XGBoost,23,0.6985
+XGBoost,24,0.7591
+XGBoost,25,0.7542
+XGBoost,26,0.66
+XGBoost,27,0.8392
+XGBoost,28,0.7292
+XGBoost,29,0.7417
+XGBoost,30,0.7392
+XGBoost,31,0.7395
+XGBoost,32,0.7281
+XGBoost,33,0.7135
+XGBoost,34,0.549
+XGBoost,35,0.6188
+XGBoost,36,0.66
+XGBoost,37,0.6862
+XGBoost,38,0.7558
+XGBoost,39,0.6362
+XGBoost,40,0.7409
+XGBoost,41,0.5734
+XGBoost,42,0.7098
+XGBoost,43,0.7051
+XGBoost,44,0.6827
+XGBoost,45,0.7176
+XGBoost,46,0.7395
+XGBoost,47,0.75
+XGBoost,48,0.7043
+XGBoost,49,0.8198
+XGBoost,50,0.6346

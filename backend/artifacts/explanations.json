@@ -1,0 +1,98 @@
+{
+  "logistic_regression": {
+    "mean_abs_shap": {
+      "Monthly Income": 0.2122,
+      "Age": 0.1173,
+      "Marital Status_Single": 0.0607,
+      "Occupation_Student": 0.0554,
+      "Educational Qualifications": 0.0464,
+      "Occupation_Employee": 0.0358,
+      "Marital Status_Married": 0.034,
+      "Gender_Male": 0.013,
+      "Family size": 0.0082,
+      "Gender_Female": 0.0082,
+      "Occupation_Self Employeed": 0.008,
+      "Marital Status_Prefer not to say": 0.0041,
+      "Occupation_House wife": 0.0007
+    },
+    "coefficients": {
+      "Age": -0.1468,
+      "Monthly Income": -0.1435,
+      "Marital Status_Single": 0.1318,
+      "Occupation_Student": 0.1106,
+      "Marital Status_Married": -0.0798,
+      "Occupation_Employee": -0.0787,
+      "Educational Qualifications": 0.0744,
+      "Marital Status_Prefer not to say": -0.0421,
+      "Occupation_Self Employeed": -0.0339,
+      "Gender_Male": 0.0268,
+      "Gender_Female": -0.017,
+      "Occupation_House wife": 0.0118,
+      "Family size": 0.0099
+    }
+  },
+  "random_forest": {
+    "mean_abs_shap": {
+      "Age": 0.1018,
+      "Family size": 0.0634,
+      "Marital Status_Single": 0.0438,
+      "Occupation_Student": 0.0431,
+      "Educational Qualifications": 0.0376,
+      "Monthly Income": 0.0298,
+      "Occupation_Employee": 0.026,
+      "Gender_Male": 0.0172,
+      "Gender_Female": 0.0166,
+      "Marital Status_Married": 0.0146,
+      "Occupation_Self Employeed": 0.0091,
+      "Marital Status_Prefer not to say": 0.0084,
+      "Occupation_House wife": 0.0028
+    },
+    "builtin_importance": {
+      "Age": 0.2994,
+      "Family size": 0.1923,
+      "Gender_Female": 0.0319,
+      "Gender_Male": 0.0323,
+      "Marital Status_Married": 0.0293,
+      "Marital Status_Prefer not to say": 0.0158,
+      "Marital Status_Single": 0.0636,
+      "Occupation_Employee": 0.036,
+      "Occupation_House wife": 0.0062,
+      "Occupation_Self Employeed": 0.0222,
+      "Occupation_Student": 0.038,
+      "Monthly Income": 0.1145,
+      "Educational Qualifications": 0.1185
+    }
+  },
+  "xgboost": {
+    "mean_abs_shap": {
+      "Age": 0.3389,
+      "Family size": 0.1321,
+      "Marital Status_Single": 0.1161,
+      "Occupation_Student": 0.1151,
+      "Educational Qualifications": 0.064,
+      "Occupation_Employee": 0.0427,
+      "Monthly Income": 0.0389,
+      "Gender_Female": 0.0329,
+      "Marital Status_Married": 0.0267,
+      "Gender_Male": 0.0132,
+      "Occupation_Self Employeed": 0.0096,
+      "Marital Status_Prefer not to say": 0.002,
+      "Occupation_House wife": 0.0014
+    },
+    "builtin_importance": {
+      "Age": 0.113,
+      "Family size": 0.0565,
+      "Gender_Female": 0.0408,
+      "Gender_Male": 0.0334,
+      "Marital Status_Married": 0.0434,
+      "Marital Status_Prefer not to say": 0.0421,
+      "Marital Status_Single": 0.1632,
+      "Occupation_Employee": 0.0492,
+      "Occupation_House wife": 0.0319,
+      "Occupation_Self Employeed": 0.047,
+      "Occupation_Student": 0.261,
+      "Monthly Income": 0.0465,
+      "Educational Qualifications": 0.0719
+    }
+  }
+}
